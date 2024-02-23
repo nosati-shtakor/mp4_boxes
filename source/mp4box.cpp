@@ -118,7 +118,7 @@ void Mp4Box::getCurrentTimeString(char* buffer, const int32_t size)
   const size_t bytes_written(std::strftime(buffer, size, "%Y-%m-%d %H:%M:%S", std::localtime(&now)));
   if(bytes_written)
   {
-    snprintf(buffer + bytes_written, size - bytes_written, ":%ld", ts.tv_nsec / 1000000); // N.B. Kind of a dirty hack to make it portable. A better solution would be to implement getting time with milliseconds on each platform.
+    snprintf(buffer + bytes_written, size - bytes_written, ".%ld", ts.tv_nsec / 1000000); // N.B. Kind of a dirty hack to make it portable. A better solution would be to implement getting time with milliseconds on each platform.
   }
 }
 
