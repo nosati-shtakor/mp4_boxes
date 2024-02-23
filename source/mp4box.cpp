@@ -125,7 +125,7 @@ void Mp4Box::printBox(const BOX& box)
   char time_buffer[32];
   getCurrentTimeString(time_buffer, sizeof(time_buffer));
 
-  printf("%s Found box of type %c%c%c%c and size %lu\n", time_buffer, (char)(box.type & 0xFF), (char)(box.type >> 8), (char)(box.type >> 16), (char)(box.type >> 24), box.size);
+  printf("%s Found box of type %c%c%c%c and size %llu\n", time_buffer, (char)(box.type & 0xFF), (char)(box.type >> 8), (char)(box.type >> 16), (char)(box.type >> 24), (long long unsigned int)box.size);
 }
 
 
