@@ -9,7 +9,10 @@ int32_t Mp4Box::dumpBoxes(const char* file_name, const bool dump_png)
 {
   std::ifstream mp4_file(file_name, std::ios_base::in | std::ios_base::binary);
   if(mp4_file.fail())
+  {
+    printf("Cannot open '%s'\n", file_name);
     return -1;
+  }
 
   while(readBox(mp4_file, dump_png) == 0);
 
