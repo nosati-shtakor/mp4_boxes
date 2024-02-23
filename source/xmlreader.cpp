@@ -68,7 +68,7 @@ int32_t XMLReader::parsePayload(const std::string& xml)
           xml_payload.type = value;
           std::transform(xml_payload.type.begin(), xml_payload.type.end(), xml_payload.type.begin(), [](const char c) -> char{ return static_cast<char>(std::tolower(c)); });
         }
-        else if(name.compare("encoding") == 0)
+        else if(name.compare("encoding") == 0 && value.compare("Base64") == 0) // TO DO: We should ignore case when comparing
         {
           assert(xml_payload.blob == nullptr);
           const uint8_t* b64_blob(reinterpret_cast<const uint8_t*>(smpte->value()));
