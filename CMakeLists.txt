@@ -36,7 +36,7 @@ if(WIN32)
     
   target_link_options(${EXECUTABLE_NAME} PRIVATE $<$<CONFIG:RELEASE>:/LTCG>)
 
-elseif(UNIX AND NOT APPLE) # Don't have Mac, so can't tell if it commpiles out of the box :-(
+elseif(UNIX AND NOT APPLE) # Don't have Mac, so can't tell if it compiles out of the box :-(
   ## 
   ## Linux
   ##
