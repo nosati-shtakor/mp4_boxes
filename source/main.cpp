@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <cstring>
 #include "../mp4box.h"
 
 

@@ -66,7 +66,7 @@ int32_t XMLReader::parsePayload(const std::string& xml)
         else if(name.compare("imagetype") == 0)
         {
           xml_payload.type = value;
-          std::transform(xml_payload.type.begin(), xml_payload.type.end(), xml_payload.type.begin(), std::tolower);
+          std::transform(xml_payload.type.begin(), xml_payload.type.end(), xml_payload.type.begin(), [](const char c) -> char{ return static_cast<char>(std::tolower(c)); });
         }
         else if(name.compare("encoding") == 0)
         {

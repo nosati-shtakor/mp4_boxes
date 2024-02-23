@@ -2,6 +2,7 @@
 #include "../boxtypes.h"
 #include "../utility.h"
 #include "../xmlreader.h"
+#include <ctime>
 
 
 int32_t Mp4Box::dumpBoxes(const char* file_name, const bool dump_png)
@@ -114,7 +115,7 @@ void Mp4Box::getCurrentTimeString(char* buffer, const int32_t size)
   const size_t bytes_written(std::strftime(buffer, size, "%Y-%m-%d %H:%M:%S", std::localtime(&now)));
   if(bytes_written)
   {
-    snprintf(buffer + bytes_written, size - bytes_written, ":%d", ts.tv_nsec / 1000000); // N.B. Kind of a dirty hack to make it portable. A better solution would be to implement getting time with milliseconds on each platform.
+    snprintf(buffer + bytes_written, size - bytes_written, ":%ld", ts.tv_nsec / 1000000); // N.B. Kind of a dirty hack to make it portable. A better solution would be to implement getting time with milliseconds on each platform.
   }
 }
 
@@ -124,7 +125,7 @@ void Mp4Box::printBox(const BOX& box)
   char time_buffer[32];
   getCurrentTimeString(time_buffer, sizeof(time_buffer));
 
-  printf("%s Found box of type %c%c%c%c and size %llu\n", time_buffer, (char)(box.type & 0xFF), (char)(box.type >> 8), (char)(box.type >> 16), (char)(box.type >> 24), box.size);
+  printf("%s Found box of type %c%c%c%c and size %lu\n", time_buffer, (char)(box.type & 0xFF), (char)(box.type >> 8), (char)(box.type >> 16), (char)(box.type >> 24), box.size);
 }
 
 
