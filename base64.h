@@ -49,5 +49,5 @@ void b64decode(const uint8_t* in, const uint32_t len, uint8_t** out, uint32_t& o
 
 bool validBase64Char(const char c)
 {
-  return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z' ) || c == '+' || c == '/' || c == '=';
+  return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z' ) || (c >= '0' && c <= '9') || c == '+' || c == '/' || c == '=';
 }
