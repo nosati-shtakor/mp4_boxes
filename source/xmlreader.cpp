@@ -55,6 +55,7 @@ int32_t XMLReader::parsePayload(const std::string& xml)
       XML_PAYLOAD xml_payload;
       rapidxml::xml_attribute<>* attribute(smpte->first_attribute());
       xml_payload.blob = nullptr;
+      xml_payload.blob_size = 0;
 
       while(attribute)
       {

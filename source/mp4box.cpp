@@ -168,19 +168,22 @@ int32_t Mp4Box::dumpPng(const std::string& xml)
 
     for(const XMLReader::XML_PAYLOAD& xml_payload : payload)
     {
-      std::string file_name(xml_payload.name);
-      file_name.append(".").append(xml_payload.type);
+      if(xml_payload.blob)
+      {
+        std::string file_name(xml_payload.name);
+        file_name.append(".").append(xml_payload.type);
       
-      std::ofstream file(file_name.c_str(), std::ios_base::out | std::ios_base::binary);
-      if(file.fail())
-      {
-        printf("Cannot create: '%s' file\n", file_name.c_str());
-      }
-      else
-      {
-        file.write(reinterpret_cast<const char*>(xml_payload.blob), xml_payload.blob_size);
-        if(file.bad())
-          printf("Writing '%s' failed!\n", file_name.c_str());
+        std::ofstream file(file_name.c_str(), std::ios_base::out | std::ios_base::binary);
+        if(file.fail())
+        {
+          printf("Cannot create: '%s' file\n", file_name.c_str());
+        }
+        else
+        {
+          file.write(reinterpret_cast<const char*>(xml_payload.blob), xml_payload.blob_size);
+          if(file.bad())
+            printf("Writing '%s' failed!\n", file_name.c_str());
+        }
       }
     }
   }
