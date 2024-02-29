@@ -18,4 +18,8 @@ One option is to:
 Another option is to start VS, go to `File` menu, select `Open` -> `Folder` and select directory with `CMakeLists.txt`
 
 ##### Mac
-Don't have one.
+Don't have one.<br><br><br>
+
+P.S.  
+This was a coding challenge given to me for a C++ position in CastLabs (castlabs.com). For a detailed description see doc/coding_challenge.pdf  
+The solution I provided here was not accepted. So, if you are targeting the same C++ position, you should provide a different (better) solution.
